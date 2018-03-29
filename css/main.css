@@ -1,0 +1,114 @@
+* {box-sizing: border-box;}
+body {
+  margin: 0;
+  color: #222;
+  font: normal normal normal 1rem/1.6 Nunito Sans, Helvetica, Arial, sans-serif;
+}
+h1{
+  line-height: 1.2;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin: 45px auto;
+  text-align: center;
+}
+footer{
+  text-align: center;
+  margin-top: 15px;
+}
+footer .heart {color: #fe4a49;}
+p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.main-app {
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 15px;
+  border: 1px solid #222;
+  position: relative;
+  max-width: 850px;
+}
+.main-app .current-location {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+.main-app .top .location {font-size: 1.75rem;}
+.main-app .top .time {color: #555;}
+.main-app .top .temp {font-size: 4rem;}
+.main-app .top .center {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.main-app .bottom .item .name{float: left;}
+.main-app .bottom .item .value{float: right;}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+@media (min-width: 576px) {
+  h1 {
+    font-size: 2.75rem;
+    margin: 55px auto;
+  }
+  .main-app {
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 25px;
+  }
+  .main-app .current-location {
+    top: 35px;
+    right: 25px;
+  }
+  .main-app .top .location {font-size: 2.25rem;}
+  .main-app .top .time {font-size: 1.2rem;}
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+  h1 {
+    font-size: 4rem;
+    margin: 120px auto;
+  }
+  .main-app {
+    margin-left: 60px;
+    margin-right: 60px;
+    padding: 25px;
+  }
+  .main-app .top .location {font-size: 2.75rem;}
+  .main-app .top .time {font-size: 1.75rem;}
+  .main-app .current-location {
+    top: 45px;
+    right: 25px;
+  }
+  .main-app .bottom {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.1rem;
+  }
+  .main-app .bottom .item {flex: 1;}
+  .main-app .bottom .item .name {
+    display: block;
+    text-align: center;
+    float: none;
+  }
+  .main-app .bottom .item .value {
+    display: block;
+    text-align: center;
+    float: none;
+  }
+  footer {font-size: 1.1rem;}
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+  h1 {    
+    font-size: 4.25rem;
+    margin: 70px auto;
+  }
+  .main-app {
+    margin-left: 500px;
+    margin-right: 500px;
+    padding: 25px;
+  }
+}
