@@ -10,6 +10,9 @@ $(document).ready(() => {
     maximumAge: 0
   };
 
+  let $temp = $("#temp"), $pressure = $("#pressure"),
+      $humidity = $("#humidity"), $sun = $("#sun");
+
   init();
 
   function init() {
@@ -23,6 +26,23 @@ $(document).ready(() => {
 
   function onGetWeatherSuccess(data) {
     console.log(data);
+
+    let main = data.main;
+    $temp.text(main.temp.toFixed());
+    $pressure.text(`${main.pressure}mb`);
+    $humidity.text(`${main.humidity}%`);
+
+    let sys = data.sys;
+    let sunrise = sys.sunrise;
+    let sunset = sys.sunset;
+    $sun.text(`${getTime(sunrise)} | ${getTime(sunset)}`);
+  }
+
+  function getTime(ms) {
+    let date = new Date(ms);
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    return `${hour} : ${minutes}`;
   }
 
   function getLocation() {
