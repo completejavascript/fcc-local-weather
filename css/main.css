@@ -1,8 +1,8 @@
 * {box-sizing: border-box;}
 body {
-  margin: 0;
-  background-color: #264653;
-  color: #fff;
+  margin: 15px;
+  background-color: #ededed;
+  color: #404040;
   font: normal normal normal 1rem/1.6 Nunito Sans, Helvetica, Arial, sans-serif;
 }
 h1{
@@ -38,94 +38,53 @@ p {
   -moz-transition: all 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
 }
-.main-app {
-  margin-left: 40px;
-  margin-right: 40px;
+section {
+  width: 100%;
+  background-color: #fff;
   padding: 15px;
-  position: relative;
-  max-width: 800px;
-  background-color: #284b58;
-  -webkit-transition: all 0.35s ease-in-out;
-  -moz-transition: all 0.35s ease-in-out;
-  transition: all 0.35s ease-in-out;
+  margin-bottom: 15px;
 }
-.main-app:hover {
-  box-shadow: 0 2px 5px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.24);
-  -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.24);
-  -moz-box-shadow: 0 2px 5px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.24);
-}
-.main-app .current-location {
-  position: absolute;
-  top: 18px;
-  right: 15px;
-}
-.main-app .top .location {font-size: 1.5rem;}
-.main-app .top .time {color: rgba(250, 250, 250, 0.8);}
-.main-app .top .temp {
-  font-size: 4rem;
-  margin-left: 5px;
-}
-.main-app .top .center {
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-.main-app .bottom .item .name{float: left;}
-.main-app .bottom .item .value{float: right;}
-.clearfix::after {
+section::after {
   content: "";
   clear: both;
   display: table;
 }
+.heading {position: relative;}
+.heading .title {font-weight: 500;}
+.heading .menu {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 70%;
+}
+.heading .menu .item:not(.pseudo) {
+  display: block;
+  text-align: left;
+  background-color: #ddd;
+  padding: 10px;
+}
+.heading .menu .item:not(.pseudo):not(:last-child) {
+  border-bottom: 1px solid #222;
+}
+.heading .menu .item.pseudo {visibility: hidden;}
+.heading .menu .icon {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.heading .menu.responsive .item:not(.pseudo) {display: none;}
+
 @media (min-width: 576px) {
   h1 {
     font-size: 2.75rem;
     margin: 55px auto;
   }
-  .main-app {
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: 25px;
-  }
-  .main-app .current-location {
-    top: 35px;
-    right: 25px;
-  }
-  .main-app .top .location {font-size: 2.25rem;}
-  .main-app .top .time {font-size: 1.2rem;}
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
   h1 {
     font-size: 4rem;
     margin: 120px auto;
-  }
-  .main-app {
-    margin-left: 60px;
-    margin-right: 60px;
-    padding: 25px;
-  }
-  .main-app .top .location {font-size: 2.75rem;}
-  .main-app .top .time {font-size: 1.5rem;}
-  .main-app .current-location {
-    top: 45px;
-    right: 25px;
-  }
-  .main-app .bottom {
-    display: flex;
-    flex-direction: row;
-    font-size: 1.1rem;
-  }
-  .main-app .bottom .item {flex: 1;}
-  .main-app .bottom .item .name {
-    display: block;
-    text-align: center;
-    float: none;
-  }
-  .main-app .bottom .item .value {
-    display: block;
-    text-align: center;
-    float: none;
   }
   footer {font-size: 1.1rem;}
 }
@@ -134,9 +93,5 @@ p {
   h1 {    
     font-size: 4.25rem;
     margin: 70px auto;
-  }
-  .main-app {
-    margin: 0px auto;
-    padding: 25px;
   }
 }

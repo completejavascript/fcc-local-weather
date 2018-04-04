@@ -1,68 +1,78 @@
 $(document).ready(() => {
-  let defaultLocation = {
-    lat: 21,
-    lon: 105 
-  };
+  $(".icon").on("click", event => {
+    let $target = $(event.target);
+    $target.closest(".menu").toggleClass("responsive");
+  });
 
-  let options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  };
+  $(".menu .item").on("click", event => {
+    let $target = $(event.target);
+    $target.closest(".menu").addClass("responsive");
+  });
 
-  let $temp = $("#temp"), $pressure = $("#pressure"),
-      $humidity = $("#humidity"), $sun = $("#sun");
+  // let defaultLocation = {
+  //   lat: 21,
+  //   lon: 105 
+  // };
 
-  init();
+  // let options = {
+  //   enableHighAccuracy: true,
+  //   timeout: 5000,
+  //   maximumAge: 0
+  // };
 
-  function init() {
-    getWeatherFromLocation(defaultLocation);
-  }
+  // let $temp = $("#temp"), $pressure = $("#pressure"),
+  //     $humidity = $("#humidity"), $sun = $("#sun");
 
-  function getWeatherFromLocation(location) {
-    let request = `https://fcc-weather-api.glitch.me/api/current?lat=${location.lat}&lon=${location.lon}`;
-    $.getJSON(request, onGetWeatherSuccess);
-  }
+  // // init();
 
-  function onGetWeatherSuccess(data) {
-    console.log(data);
+  // function init() {
+  //   getWeatherFromLocation(defaultLocation);
+  // }
 
-    let main = data.main;
-    $temp.text(main.temp.toFixed());
-    $pressure.text(`${main.pressure}mb`);
-    $humidity.text(`${main.humidity}%`);
+  // function getWeatherFromLocation(location) {
+  //   let request = `https://fcc-weather-api.glitch.me/api/current?lat=${location.lat}&lon=${location.lon}`;
+  //   $.getJSON(request, onGetWeatherSuccess);
+  // }
 
-    let sys = data.sys;
-    let sunrise = sys.sunrise;
-    let sunset = sys.sunset;
-    $sun.text(`${getTime(sunrise)} | ${getTime(sunset)}`);
-  }
+  // function onGetWeatherSuccess(data) {
+  //   console.log(data);
 
-  function getTime(ms) {
-    let date = new Date(ms);
-    let hour = date.getHours();
-    let minutes = date.getMinutes();
-    return `${hour} : ${minutes}`;
-  }
+  //   let main = data.main;
+  //   $temp.text(main.temp.toFixed());
+  //   $pressure.text(`${main.pressure}mb`);
+  //   $humidity.text(`${main.humidity}%`);
 
-  function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => onGetLocationSuccess, 
-        error => onGetLocationError, 
-        options);
-    } else {
-      console.log("Geolocation is not supported by this browser.");
-    }
-  }
+  //   let sys = data.sys;
+  //   let sunrise = sys.sunrise;
+  //   let sunset = sys.sunset;
+  //   $sun.text(`${getTime(sunrise)} | ${getTime(sunset)}`);
+  // }
 
-  function onGetLocationSuccess(position) {
-    currentLocation.lat = position.coords.latitude;
-    currentLocation.lon = position.coords.longitude;
-    console.log("Current location:", currentLocation);
-  }
+  // function getTime(ms) {
+  //   let date = new Date(ms);
+  //   let hour = date.getHours();
+  //   let minutes = date.getMinutes();
+  //   return `${hour} : ${minutes}`;
+  // }
 
-  function onGetLocationError(error) {
-    console.log("Get location error:", error);
-  }
+  // function getLocation() {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       position => onGetLocationSuccess, 
+  //       error => onGetLocationError, 
+  //       options);
+  //   } else {
+  //     console.log("Geolocation is not supported by this browser.");
+  //   }
+  // }
+
+  // function onGetLocationSuccess(position) {
+  //   currentLocation.lat = position.coords.latitude;
+  //   currentLocation.lon = position.coords.longitude;
+  //   console.log("Current location:", currentLocation);
+  // }
+
+  // function onGetLocationError(error) {
+  //   console.log("Get location error:", error);
+  // }
 });
