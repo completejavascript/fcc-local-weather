@@ -10,16 +10,18 @@ $(document).ready(() => {
   let $next48hTemp = $next48hContent.find(".temp");
   let $next48hSummary = $next48hContent.find(".summary");
   let $next48hHumidity = $next48hContent.find(".humidity .detail");
-  let dataNext48h, indexNext48h = 1;
+  let $next48hSelect = $(".next-48h .heading .select-style select");
+  let dataNext48h, indexNext48h = 1, next48hSelectInit = false;
 
   let $next7dContent = $(".next-7d .content");
   let $day = $next7dContent.find(".day");
   let $next7dTemp = $next7dContent.find(".temp");
   let $next7dSummary = $next7dContent.find(".summary");
   let $next7dHumidity = $next7dContent.find(".humidity .detail");
-  let dataNext7d, indexNext7d = 1;
+  let $next7dSelect = $(".next-7d .heading .select-style select");
+  let dataNext7d, indexNext7d = 1, next7dSelectInit = false;
   
-  let skycons = new Skycons({"color": "#404040"});
+  let skycons = new Skycons({"color": "#3da4ab"});
   let F2C = F => ((F - 32) * 5 / 9).toFixed();
   let C2F = C => (C * 9 / 5 + 32).toFixed();
   let currentUnit = "F";
@@ -60,9 +62,9 @@ $(document).ready(() => {
     let requestURL = `https://api.darksky.net/forecast/${secretKey}/${lat},${lon}`;
 
     $.getJSON(requestURL, info => {
-      updateWeatherCurrently(info.currently,$currentTemp, $currentSummary, $currentHumidity, "current-icon");
-      updateWeatherNext48h(info.hourly, indexNext48h);
-      updateWeatherNext7d(info.daily, indexNext7d);
+      updateWeatherCurrently(info.currently, $currentTemp, $currentSummary, $currentHumidity, "current-icon");
+      updateWeatherNext48h(info.hourly.data, indexNext48h);
+      updateWeatherNext7d(info.daily.data, indexNext7d);
     });
   }
 
@@ -73,21 +75,32 @@ $(document).ready(() => {
 
     $summary.text(infoCurrently.summary);
     $humidity.text(`${infoCurrently.humidity * 100}%`);
-    addWeatherIcon(idIcon, infoCurrently.icon);
+    setWeatherIcon(idIcon, infoCurrently.icon);
   }
 
-  function updateWeatherNext48h(infoHourly, index) {
-    dataNext48h = infoHourly.data;
+  function updateWeatherNext48h(infoHourlyData, index) {
+    dataNext48h = infoHourlyData;
     let dataChoosen = dataNext48h[index];
     let date = new Date(dataChoosen.time * 1000);
     let formatDate = date.toLocaleString("en-US", {weekday: 'long', hour: '2-digit', minute:'2-digit'});
     $time.text(formatDate);
 
     updateWeatherCurrently(dataChoosen, $next48hTemp, $next48hSummary, $next48hHumidity, "next48h-icon");
+
+    if(next48hSelectInit == false) {
+      let dataSelect = [];
+      for(let i = 1; i < dataNext48h.length; i += 6) {
+        date = new Date(dataNext48h[i].time * 1000);
+        formatDate = date.toLocaleString("en-US", {weekday: 'long', hour: '2-digit', minute:'2-digit'});
+        dataSelect.push(formatDate);
+      }
+      initSelect($next48hSelect, dataSelect, updateWeatherNext48h, 6, dataNext48h);
+      next48hSelectInit = true;
+    }
   }
 
-  function updateWeatherNext7d(infoDaily, index) {
-    dataNext7d = infoDaily.data;
+  function updateWeatherNext7d(infoDailyData, index) {
+    dataNext7d = infoDailyData;
     let dataChoosen = dataNext7d[index];
     let date = new Date(dataChoosen.time * 1000);
     let formatDate = date.toLocaleString("en-US", {weekday: 'long'});
@@ -101,31 +114,52 @@ $(document).ready(() => {
 
     $next7dSummary.text(dataChoosen.summary);
     $next7dHumidity.text(`${dataChoosen.humidity * 100}%`);
-    addWeatherIcon("next7d-icon", dataChoosen.icon);
+    setWeatherIcon("next7d-icon", dataChoosen.icon);
 
+    if(next7dSelectInit == false) {
+      let dataSelect = [];
+      for(let i = 1; i < dataNext7d.length; i++) {
+        date = new Date(dataNext7d[i].time * 1000);
+        formatDate = date.toLocaleString("en-US", {weekday: 'long'});
+        dataSelect.push(formatDate);
+      }
+      initSelect($next7dSelect, dataSelect, updateWeatherNext7d, 1, dataNext7d);
+      next7dSelectInit = true;
+    }
   }
 
-  function addWeatherIcon(id, type) {
+  function initSelect($select, dataSelect, updateFunc, step, data) {
+    dataSelect.forEach(element => {
+      $select.append(`<option>${element}</option>`);
+    });
+    $select.on("change", (event) => {
+      let $target = $(event.target);
+      let index = $target[0].selectedIndex * step + 1;
+      updateFunc(data, index);
+    });
+  }
+
+  function setWeatherIcon(id, type) {
     if (type === "clear-day") {
-      skycons.add(id, Skycons.CLEAR_DAY);
+      skycons.set(id, Skycons.CLEAR_DAY);
     } else if (type === "clear-night") {
-      skycons.add(id, Skycons.CLEAR_NIGHT);
+      skycons.set(id, Skycons.CLEAR_NIGHT);
     } else if (type === "rain") {
-      skycons.add(id, Skycons.RAIN);
+      skycons.set(id, Skycons.RAIN);
     } else if (type === "snow") {
-      skycons.add(id, Skycons.SNOW);
+      skycons.set(id, Skycons.SNOW);
     } else if (type === "sleet") {
-      skycons.add(id, Skycons.SLEET);
+      skycons.set(id, Skycons.SLEET);
     } else if (type === "wind") {
-      skycons.add(id, Skycons.WIND);
+      skycons.set(id, Skycons.WIND);
     } else if (type === "fog") {
-      skycons.add(id, Skycons.FOG);
+      skycons.set(id, Skycons.FOG);
     } else if (type === "cloudy") {
-      skycons.add(id, Skycons.CLOUDY);
+      skycons.set(id, Skycons.CLOUDY);
     } else if (type === "partly-cloudy-day") {
-      skycons.add(id, Skycons.PARTLY_CLOUDY_DAY);
+      skycons.set(id, Skycons.PARTLY_CLOUDY_DAY);
     } else if (type === "partly-cloudy-night") {
-      skycons.add(id, Skycons.PARTLY_CLOUDY_NIGHT);
+      skycons.set(id, Skycons.PARTLY_CLOUDY_NIGHT);
     } else {
       console.log("Other Weather Icon");
     }

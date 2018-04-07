@@ -55,6 +55,11 @@ section {
   background-color: #fff;
   margin-bottom: 15px;
 }
+section:hover {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.24);
+  -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.24);
+  -moz-box-shadow: 0 2px 5px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.24);
+}
 section::after {
   content: "";
   clear: both;
@@ -91,14 +96,26 @@ section::after {
 .heading .menu .item.active {
   color: #f6cd61;
 }
-.heading .icon {
-  position: absolute;
-  top: 13px;
-  right: 15px;
-  color: #eee;
+.select-style {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #fafafa;
+  margin-right: 15px;
+  text-align: right;
 }
-.heading .icon:hover {
-  color: #fff;
+.select-style select {
+  cursor: pointer;
+  padding: 5px 8px;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font: normal normal normal 1rem/1.6 Nunito Sans, Helvetica, Arial, sans-serif !important;
+}
+.select-style select:focus {
+  outline: none;
 }
 .content {
   text-align: center;
@@ -131,7 +148,7 @@ section::after {
 @media (min-width: 768px) { 
   .heading {font-size: 1.2rem;}
   section {
-    width: 80%;
+    width: 800px;
     margin: 30px auto;
   }
   header .title {
@@ -158,7 +175,6 @@ section::after {
     margin: 100px auto;
     margin-bottom: 0px;
   }
-  section { width: 50%;}
   .content item {margin-bottom: 20px;}
   .content .location, 
   .content .time,
