@@ -23,17 +23,17 @@
       <div class="heading">
         <div class="title">Currently</div>
         <div class="menu responsive">
-          <span class="item">&deg;C</span>
-          <span class="item">&deg;F</span>
+          <span class="item" unit="F">&deg;F</span>
+          <span class="item" unit="C">&deg;C</span>
         </div>
         <a class="icon"><i class="fa fa-bars"></i></a>
       </div>
       <div class="content">
-        <div class="item location">Hanoi, Thanh Pho Ha Noi</div>
-        <div class="item temp">62°F</div>
-        <div class="item icon"></div>
-        <div class="item info">Overcast</div>
-        <div class="item humidity">0.11%</div>
+        <div class="item location"></div>
+        <div class="item temp"></div>
+        <div class="item icon"><canvas id="current-icon"></canvas></div>
+        <div class="item summary"></div>
+        <div class="item humidity"><i class="fa fa-tint"></i> <span class="detail"></span></div>
       </div>
     </section>
   
@@ -54,7 +54,7 @@
         <div class="item time">Saturday 19:00</div>
         <div class="item temp">62°F</div>
         <div class="item icon"></div>
-        <div class="item info">Overcast</div>
+        <div class="item summary">Overcast</div>
         <div class="item humidity">0.11%</div>
       </div>
     </section>
@@ -79,7 +79,7 @@
         <div class="item day">Sunday</div>
         <div class="item temp">62°F</div>
         <div class="item icon"></div>
-        <div class="item info">Overcast</div>
+        <div class="item summary">Overcast</div>
         <div class="item humidity">0.11%</div>
       </div>
     </section>
@@ -87,6 +87,7 @@
   <footer>Made with <i class="fa fa-heart heart"></i> by <a href="http://about.phamvanlam.com">Lam Pham</a></footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://rawgit.com/darkskyapp/skycons/master/skycons.js"></script>
   <script src="./js/main.js"></script>
 </body>
 </html>

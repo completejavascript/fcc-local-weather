@@ -83,7 +83,7 @@ section::after {
   display: block;
   text-align: left;
   background-color: #3da4ab;
-  padding: 15px;
+  padding: 10px 15px;
   visibility: visible;
   opacity: 1;
   transition: visibility 0s linear 0s, opacity 300ms;
@@ -123,6 +123,10 @@ section::after {
 }
 .content .temp {
   font-size: 2.5rem;
+}
+.content .icon canvas {
+  width: 150px;
+  height: 75px;
 }
 @media (min-width: 576px) {
   h1 {
