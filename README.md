@@ -1,4 +1,4 @@
-# [fcc] Show Local Weather
+# [FCC] Show Local Weather
 A basic front-end project on freeCodeCamp - Show Local Weather
 
 # Preview
