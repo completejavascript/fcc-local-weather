@@ -10,11 +10,22 @@ h1{
   font-weight: 700;
   font-size: 2.5rem;
   margin: 45px auto;
+  margin-bottom: 0;
   text-align: center;
+}
+.subtitle {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-bottom: 45px;
+  color: #606060 
 }
 a {
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
 }
 a:hover {
   color: #fe4a49;
@@ -41,7 +52,6 @@ p {
 section {
   width: 100%;
   background-color: #fff;
-  padding: 15px;
   margin-bottom: 15px;
 }
 section::after {
@@ -49,31 +59,71 @@ section::after {
   clear: both;
   display: table;
 }
-.heading {position: relative;}
-.heading .title {font-weight: 500;}
-.heading .menu {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 70%;
+.heading {
+  position: relative;
+  background: #3da4ab;
+  color: #fff;
 }
-.heading .menu .item:not(.pseudo) {
+.heading .title {
+  font-weight: 500;
+  height: 50px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  padding-left: 15px;
+}
+.heading .menu {
+  width: 100%;
+  position: absolute;
+  top: 50px;
+  left: 0;
+}
+.heading .menu .item {
   display: block;
   text-align: left;
-  background-color: #ddd;
-  padding: 10px;
+  background-color: #3da4ab;
+  padding: 15px;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
 }
-.heading .menu .item:not(.pseudo):not(:last-child) {
-  border-bottom: 1px solid #222;
+.heading .menu.responsive .item {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
 }
-.heading .menu .item.pseudo {visibility: hidden;}
-.heading .menu .icon {
+.heading .menu .item:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+.heading .icon {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 13px;
+  right: 15px;
+  color: #eee;
 }
-.heading .menu.responsive .item:not(.pseudo) {display: none;}
-
+.heading .icon:hover {
+  color: #fff;
+}
+/* .heading .menu.responsive .item {display: none;} */
+.content {
+  text-align: center;
+  padding: 15px;
+}
+.content .item {
+  margin-bottom: 5px;
+}
+.content .location, 
+.content .time,
+.content .day {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.15rem;
+  margin: 15px auto;
+}
+.content .temp {
+  font-size: 2.5rem;
+}
 @media (min-width: 576px) {
   h1 {
     font-size: 2.75rem;

@@ -1,12 +1,12 @@
 $(document).ready(() => {
   $(".icon").on("click", event => {
     let $target = $(event.target);
-    $target.closest(".menu").toggleClass("responsive");
+    $target.closest(".heading").find(".menu").toggleClass("responsive");
   });
 
   $(".menu .item").on("click", event => {
     let $target = $(event.target);
-    $target.closest(".menu").addClass("responsive");
+    $target.closest(".heading").find(".menu").addClass("responsive");
   });
 
   // let defaultLocation = {

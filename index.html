@@ -16,58 +16,71 @@
   <body>
     <header>
       <h1 class="title my-transition">Weather App</h1>
+      <p class="subtitle my-transition">Simple Weather App using <a href="https://darksky.net/dev/">Dark Sky API</a>, <a href="https://darkskyapp.github.io/skycons/">Skycons</a>.</p>
     </header>
   
     <section class="currently my-box-shadow my-transition">
       <div class="heading">
-        <div class="title">
-          <span>Currently</span>
-        </div>
+        <div class="title">Currently</div>
         <div class="menu responsive">
-          <a class="icon"><i class="fa fa-bars"></i></a>
-          <a class="item pseudo">x</a>
-          <a class="item">&deg;C</a>
-          <a class="item">&deg;F</a>
+          <span class="item">&deg;C</span>
+          <span class="item">&deg;F</span>
         </div>
+        <a class="icon"><i class="fa fa-bars"></i></a>
+      </div>
+      <div class="content">
+        <div class="item location">Hanoi, Thanh Pho Ha Noi</div>
+        <div class="item temp">62°F</div>
+        <div class="item icon"></div>
+        <div class="item info">Overcast</div>
+        <div class="item humidity">0.11%</div>
       </div>
     </section>
   
     <section class="next-48h my-box-shadow my-transition">
       <div class="heading">
-        <div class="title">
-          <span>Next 48 Hours</span>
-        </div>
+        <div class="title">Next 48 Hours</div>
         <div class="menu responsive">
-          <a class="icon">
-            <i class="fa fa-bars"></i>
-          </a>
-          <a class="item pseudo">x</a>
-          <a class="item">Thursday 08:00</a>
-          <a class="item">Thursday 20:00</a>
-          <a class="item">Friday 08:00</a>
-          <a class="item">Friday 20:00</a>
+          <span class="item">Thursday 08:00</span>
+          <span class="item">Thursday 20:00</span>
+          <span class="item">Friday 08:00</span>
+          <span class="item">Friday 20:00</span>
         </div>
+        <a class="icon">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      <div class="content">
+        <div class="item time">Saturday 19:00</div>
+        <div class="item temp">62°F</div>
+        <div class="item icon"></div>
+        <div class="item info">Overcast</div>
+        <div class="item humidity">0.11%</div>
       </div>
     </section>
     
     <section class="next-7d my-box-shadow my-transition">
       <div class="heading">
-        <div class="title">
-          <span>Next 7 Days</span>
-        </div>
+        <div class="title">Next 7 Days</div>
         <div class="menu responsive">
-          <a class="icon">
-            <i class="fa fa-bars"></i>
-          </a>
-          <a class="item pseudo">x</a>
-          <a class="item">Thursday</a>
-          <a class="item">Friday</a>
-          <a class="item">Saturday</a>
-          <a class="item">Sunday</a>
-          <a class="item">Monday</a>
-          <a class="item">Tuesday</a>
-          <a class="item">Wednesday</a>
+          <span class="item">Thursday</span>
+          <span class="item">Friday</span>
+          <span class="item">Saturday</span>
+          <span class="item">Sunday</span>
+          <span class="item">Monday</span>
+          <span class="item">Tuesday</span>
+          <span class="item">Wednesday</span>
         </div>
+        <a class="icon">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      <div class="content">
+        <div class="item day">Sunday</div>
+        <div class="item temp">62°F</div>
+        <div class="item icon"></div>
+        <div class="item info">Overcast</div>
+        <div class="item humidity">0.11%</div>
       </div>
     </section>
 
