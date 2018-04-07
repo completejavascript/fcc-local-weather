@@ -5,7 +5,7 @@ body {
   color: #404040;
   font: normal normal normal 1rem/1.6 Nunito Sans, Helvetica, Arial, sans-serif;
 }
-h1{
+header .title{
   line-height: 1.2;
   font-weight: 700;
   font-size: 2.5rem;
@@ -13,7 +13,7 @@ h1{
   margin-bottom: 0;
   text-align: center;
 }
-.subtitle {
+header .subtitle {
   text-align: center;
   font-size: 0.8rem;
   margin-bottom: 45px;
@@ -21,7 +21,7 @@ h1{
 }
 a {
   text-decoration: none;
-  color: inherit;
+  color: #3da4ab;
   cursor: pointer;
   -webkit-transition: all 0.35s ease-in-out;
   -moz-transition: all 0.35s ease-in-out;
@@ -33,6 +33,7 @@ a:hover {
 footer{
   text-align: center;
   margin-top: 15px;
+  margin-bottom: 25px;
 }
 footer .heart {color: #fe4a49;}
 p {
@@ -63,38 +64,32 @@ section::after {
   position: relative;
   background: #3da4ab;
   color: #fff;
-}
-.heading .title {
-  font-weight: 500;
   height: 50px;
-  border-bottom: 1px solid #ccc;
   display: flex;
   display: -webkit-flex;
   align-items: center;
-  padding-left: 15px;
+  justify-content: space-between;
 }
+.heading .title {
+  font-weight: 500;
+  padding-left: 15px;
+  float: left;
+}
+.heading .title
 .heading .menu {
-  width: 100%;
-  position: absolute;
-  top: 50px;
-  left: 0;
+  float: right;
 }
 .heading .menu .item {
-  display: block;
   text-align: left;
   background-color: #3da4ab;
-  padding: 10px 15px;
-  visibility: visible;
-  opacity: 1;
-  transition: visibility 0s linear 0s, opacity 300ms;
+  padding: 10px 15px 10px 0px;
 }
-.heading .menu.responsive .item {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s linear 300ms, opacity 300ms;
+.heading .menu .item:not(.active):hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
-.heading .menu .item:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+.heading .menu .item.active {
+  color: #f6cd61;
 }
 .heading .icon {
   position: absolute;
@@ -105,7 +100,6 @@ section::after {
 .heading .icon:hover {
   color: #fff;
 }
-/* .heading .menu.responsive .item {display: none;} */
 .content {
   text-align: center;
   padding: 15px;
@@ -121,31 +115,63 @@ section::after {
   font-size: 1.15rem;
   margin: 15px auto;
 }
-.content .temp {
-  font-size: 2.5rem;
-}
+.content .temp {font-size: 2.5rem;}
 .content .icon canvas {
   width: 150px;
   height: 75px;
 }
 @media (min-width: 576px) {
-  h1 {
+  header .title {
     font-size: 2.75rem;
     margin: 55px auto;
+    margin-bottom: 0;
   }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
-  h1 {
+  .heading {font-size: 1.2rem;}
+  section {
+    width: 80%;
+    margin: 30px auto;
+  }
+  header .title {
     font-size: 4rem;
-    margin: 120px auto;
+    margin: 70px auto;
+    margin-bottom: 0px;
+  }
+  header .subtitle {
+    font-size: 1.2rem;
   }
   footer {font-size: 1.1rem;}
+  .content .location, 
+  .content .time,
+  .content .day {
+    font-weight: 500;
+    font-size: 2.2rem;
+    margin: 20px auto;
+  }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
-  h1 {    
-    font-size: 4.25rem;
-    margin: 70px auto;
+  header .title {    
+    font-size: 4.7rem;
+    margin: 100px auto;
+    margin-bottom: 0px;
+  }
+  section { width: 50%;}
+  .content item {margin-bottom: 20px;}
+  .content .location, 
+  .content .time,
+  .content .day {
+    font-weight: 500;
+    font-size: 2.75rem;
+    margin: 25px auto;
+  }
+  .content .summary,
+  .content .humidity {font-size: 1.2rem;}
+  .content .temp {font-size: 4rem;}
+  .content .icon canvas {
+    width: 200px;
+    height: 100px;
   }
 }

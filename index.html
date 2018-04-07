@@ -22,11 +22,10 @@
     <section class="currently my-box-shadow my-transition">
       <div class="heading">
         <div class="title">Currently</div>
-        <div class="menu responsive">
-          <span class="item" unit="F">&deg;F</span>
+        <div class="menu">
+          <span class="item active" unit="F">&deg;F</span>
           <span class="item" unit="C">&deg;C</span>
         </div>
-        <a class="icon"><i class="fa fa-bars"></i></a>
       </div>
       <div class="content">
         <div class="item location"></div>
@@ -40,47 +39,26 @@
     <section class="next-48h my-box-shadow my-transition">
       <div class="heading">
         <div class="title">Next 48 Hours</div>
-        <div class="menu responsive">
-          <span class="item">Thursday 08:00</span>
-          <span class="item">Thursday 20:00</span>
-          <span class="item">Friday 08:00</span>
-          <span class="item">Friday 20:00</span>
-        </div>
-        <a class="icon">
-          <i class="fa fa-bars"></i>
-        </a>
       </div>
       <div class="content">
-        <div class="item time">Saturday 19:00</div>
-        <div class="item temp">62°F</div>
-        <div class="item icon"></div>
-        <div class="item summary">Overcast</div>
-        <div class="item humidity">0.11%</div>
+        <div class="item time"></div>
+        <div class="item temp"></div>
+        <div class="item icon"><canvas id="next48h-icon"></canvas></div>
+        <div class="item summary"></div>
+        <div class="item humidity"><i class="fa fa-tint"></i> <span class="detail"></span></div>
       </div>
     </section>
     
     <section class="next-7d my-box-shadow my-transition">
       <div class="heading">
         <div class="title">Next 7 Days</div>
-        <div class="menu responsive">
-          <span class="item">Thursday</span>
-          <span class="item">Friday</span>
-          <span class="item">Saturday</span>
-          <span class="item">Sunday</span>
-          <span class="item">Monday</span>
-          <span class="item">Tuesday</span>
-          <span class="item">Wednesday</span>
-        </div>
-        <a class="icon">
-          <i class="fa fa-bars"></i>
-        </a>
       </div>
       <div class="content">
-        <div class="item day">Sunday</div>
-        <div class="item temp">62°F</div>
-        <div class="item icon"></div>
-        <div class="item summary">Overcast</div>
-        <div class="item humidity">0.11%</div>
+        <div class="item day"></div>
+        <div class="item temp"></div>
+        <div class="item icon"><canvas id="next7d-icon"></canvas></div>
+        <div class="item summary"></div>
+        <div class="item humidity"><i class="fa fa-tint"></i> <span class="detail"></span></div>
       </div>
     </section>
 
