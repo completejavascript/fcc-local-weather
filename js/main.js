@@ -50,7 +50,7 @@ $(document).ready(() => {
     }
   });
 
-  $.getJSON("https://ipinfo.io/", info => onLocationGot(info));
+  $.getJSON("https://ipinfo.io/", onLocationGot);
 
   function onLocationGot(info) {
     $location.text(`${info.city}, ${info.region}`);
