@@ -74,7 +74,7 @@ $(document).ready(() => {
     $temp.attr("value", curTemp);
 
     $summary.text(infoCurrently.summary);
-    $humidity.text(`${infoCurrently.humidity * 100}%`);
+    $humidity.text(`${(infoCurrently.humidity * 100).toFixed()}%`);
     setWeatherIcon(idIcon, infoCurrently.icon);
   }
 
