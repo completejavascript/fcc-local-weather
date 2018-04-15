@@ -62,10 +62,16 @@ $(document).ready(() => {
     let requestURL = `https://api.darksky.net/forecast/${secretKey}/${lat},${lon}`;
 
     $.getJSON(requestURL, info => {
+      highlightView();
       updateWeatherCurrently(info.currently, $currentTemp, $currentSummary, $currentHumidity, "current-icon");
       updateWeatherNext48h(info.hourly.data, indexNext48h);
       updateWeatherNext7d(info.daily.data, indexNext7d);
     });
+  }
+
+  function highlightView() {
+    $(".loading").css("display", "none");
+    $(".main-app").css("opacity", 1);
   }
 
   function updateWeatherCurrently(infoCurrently, $temp, $summary, $humidity, idIcon) {
