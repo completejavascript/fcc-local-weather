@@ -142,7 +142,6 @@ $(document).ready(() => {
       let $target = $(event.target);
       let index = $target[0].selectedIndex * step + 1;
       updateFunc(data, index);
-      switchTemperatureUnit();
     });
   }
 
