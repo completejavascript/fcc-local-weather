@@ -76,6 +76,8 @@ $(document).ready(() => {
 
   function updateWeatherCurrently(infoCurrently, $temp, $summary, $humidity, idIcon) {
     let curTemp = infoCurrently.temperature.toFixed();
+	if (currentUnit === "C") curTemp = F2C(curTemp);
+	
     $temp.text(`${curTemp}°${currentUnit}`); 
     $temp.attr("value", curTemp);
 
@@ -114,12 +116,18 @@ $(document).ready(() => {
 
     let minTemp = dataChoosen.temperatureMin.toFixed();
     let maxTemp = dataChoosen.temperatureMax.toFixed();
+	
+	if (currentUnit === "C") {
+	  minTemp = F2C(minTemp);
+	  maxTemp = F2C(maxTemp);
+	}
+	
     $next7dTemp.text(`${minTemp}°${currentUnit} / ${maxTemp}°${currentUnit}`);
     $next7dTemp.attr("min", minTemp);
     $next7dTemp.attr("max", maxTemp);
 
     $next7dSummary.text(dataChoosen.summary);
-    $next7dHumidity.text(`${dataChoosen.humidity * 100}%`);
+    $next7dHumidity.text(`${(dataChoosen.humidity * 100).toFixed()}%`);
     setWeatherIcon("next7d-icon", dataChoosen.icon);
 
     if(next7dSelectInit == false) {
@@ -175,9 +183,21 @@ $(document).ready(() => {
   function switchTemperatureUnit() {
     switchTemperatureUnitByItem($currentTemp);
     switchTemperatureUnitByItem($next48hTemp);
+	switchTemperatureUnitNext7d();
+  }
 
-    // next 7 days
-    let minTemp = $next7dTemp.attr("min"), maxTemp = $next7dTemp.attr("max");
+  function switchTemperatureUnitByItem($item) {
+    let currentTemp = $item.attr("value"), newTemp;
+
+    if(currentUnit === "F") newTemp = C2F(currentTemp);
+    else newTemp = F2C(currentTemp);
+
+    $item.text(`${newTemp}°${currentUnit}`);
+    $item.attr("value", newTemp);
+  }
+  
+  function switchTemperatureUnitNext7d() {
+	let minTemp = $next7dTemp.attr("min"), maxTemp = $next7dTemp.attr("max");
     let newMin, newMax;
 
     if(currentUnit === "F") {
@@ -191,15 +211,5 @@ $(document).ready(() => {
     $next7dTemp.text(`${newMin}°${currentUnit} / ${newMax}°${currentUnit}`);
     $next7dTemp.attr("min", newMin);
     $next7dTemp.attr("max", newMax);
-  }
-
-  function switchTemperatureUnitByItem($item) {
-    let currentTemp = $item.attr("value"), newTemp;
-
-    if(currentUnit === "F") newTemp = C2F(currentTemp);
-    else newTemp = F2C(currentTemp);
-
-    $item.text(`${newTemp}°${currentUnit}`);
-    $item.attr("value", newTemp);
   }
 });
