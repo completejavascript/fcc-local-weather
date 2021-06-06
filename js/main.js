@@ -55,11 +55,11 @@ $(document).ready(() => {
   }
 
   function updateWeatherInfo(lat, lng) {
-    let requestURL = `https://simple-darksky-server.glitch.me/?lat=${lat}&lng=${lng}`;
+    let requestURL = `https://api-completejavascript.vercel.app/api/v1/weather/?lat=${lat}&lng=${lng}`;
 
     $.getJSON(requestURL, (info) => {
-      let { code, data } = info;
-      if (code === 200) {
+      let { error, data } = info;
+      if (!error) {
         highlightView();
         updateWeatherCurrently(
           data.currently,
@@ -70,6 +70,8 @@ $(document).ready(() => {
         );
         updateWeatherNext48h(data.hourly.data, indexNext48h);
         updateWeatherNext7d(data.daily.data, indexNext7d);
+      } else {
+        console.log("Get weather error:", error);
       }
     });
   }
