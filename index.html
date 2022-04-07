@@ -1,113 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="Showing the Local Weather on Currently, Next 48 Hours and Next 7 Days"
+    />
+    <meta
+      name="keywords"
+      content="show local weather, local weather, fcc, freecodecamp, lam pham, completejavascript"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="Showing the Local Weather on Currently, Next 48 Hours and Next 7 Days">
-  <meta name="keywords" content="show local weather, local weather, fcc, freecodecamp, lam pham, completejavascript">
+    <title>Show the Local Weather - Lam Pham</title>
 
-  <title>Show the Local Weather - Lam Pham</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./css/main.css">
-</head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-96543695-6"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-96543695-6");
+    </script>
+  </head>
 
-<body>
-  <div class="main-app">
-    <header>
-      <h1 class="title my-transition">Weather App</h1>
-      <p class="subtitle my-transition">Simple Weather App using
-        <a href="https://darksky.net/dev/">Dark Sky API</a>,
-        <a href="https://darkskyapp.github.io/skycons/">Skycons</a>.</p>
-    </header>
+  <body>
+    <div class="main-app">
+      <header>
+        <h1 class="title my-transition">Weather App</h1>
+        <p class="subtitle my-transition">
+          Simple Weather App using
+          <a href="https://darksky.net/dev/">Dark Sky API</a>,
+          <a href="https://darkskyapp.github.io/skycons/">Skycons</a>.
+        </p>
+      </header>
 
-    <section class="currently my-box-shadow my-transition">
-      <div class="heading">
-        <div class="title">Currently</div>
-        <div class="menu">
-          <span class="item active" unit="F">&deg;F</span>
-          <span class="item" unit="C">&deg;C</span>
+      <section class="currently my-box-shadow my-transition">
+        <div class="heading">
+          <div class="title">Currently</div>
+          <div class="menu">
+            <span class="item active" unit="F">&deg;F</span>
+            <span class="item" unit="C">&deg;C</span>
+          </div>
         </div>
-      </div>
-      <div class="content">
-        <div class="item location"></div>
-        <div class="item temp"></div>
-        <div class="item icon">
-          <canvas id="current-icon"></canvas>
+        <div class="content">
+          <div class="item location"></div>
+          <div class="item temp"></div>
+          <div class="item icon">
+            <canvas id="current-icon"></canvas>
+          </div>
+          <div class="item summary"></div>
+          <div class="item humidity">
+            <i class="fa fa-tint"></i>
+            <span class="detail"></span>
+          </div>
         </div>
-        <div class="item summary"></div>
-        <div class="item humidity">
-          <i class="fa fa-tint"></i>
-          <span class="detail"></span>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="next-48h my-box-shadow my-transition">
-      <div class="heading">
-        <div class="title">Next 48 Hours</div>
-        <div class="select-style">
-          <select>
-          </select>
+      <section class="next-48h my-box-shadow my-transition">
+        <div class="heading">
+          <div class="title">Next 48 Hours</div>
+          <div class="select-style">
+            <select></select>
+          </div>
         </div>
-      </div>
-      <div class="content">
-        <div class="item time"></div>
-        <div class="item temp"></div>
-        <div class="item icon">
-          <canvas id="next48h-icon"></canvas>
+        <div class="content">
+          <div class="item time"></div>
+          <div class="item temp"></div>
+          <div class="item icon">
+            <canvas id="next48h-icon"></canvas>
+          </div>
+          <div class="item summary"></div>
+          <div class="item humidity">
+            <i class="fa fa-tint"></i>
+            <span class="detail"></span>
+          </div>
         </div>
-        <div class="item summary"></div>
-        <div class="item humidity">
-          <i class="fa fa-tint"></i>
-          <span class="detail"></span>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="next-7d my-box-shadow my-transition">
-      <div class="heading">
-        <div class="title">Next 7 Days</div>
-        <div class="select-style">
-          <select>
-          </select>
+      <section class="next-7d my-box-shadow my-transition">
+        <div class="heading">
+          <div class="title">Next 7 Days</div>
+          <div class="select-style">
+            <select></select>
+          </div>
         </div>
-      </div>
-      <div class="content">
-        <div class="item day"></div>
-        <div class="item temp"></div>
-        <div class="item icon">
-          <canvas id="next7d-icon"></canvas>
+        <div class="content">
+          <div class="item day"></div>
+          <div class="item temp"></div>
+          <div class="item icon">
+            <canvas id="next7d-icon"></canvas>
+          </div>
+          <div class="item summary"></div>
+          <div class="item humidity">
+            <i class="fa fa-tint"></i>
+            <span class="detail"></span>
+          </div>
         </div>
-        <div class="item summary"></div>
-        <div class="item humidity">
-          <i class="fa fa-tint"></i>
-          <span class="detail"></span>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <footer>Made with
-      <i class="fa fa-heart heart"></i> by
-      <a href="http://about.phamvanlam.com">Lam Pham</a>
-    </footer>
-  </div>
-
-  <div class="loading">
-    <div>Please, waiting for retrieving your location and the local weather.</div>
-    <div class="lds-ellipsis">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <footer>
+        Made with <i class="fa fa-heart heart"></i> by
+        <a href="http://about.phamvanlam.com">Lam Pham</a>
+      </footer>
     </div>
-  </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://rawgit.com/darkskyapp/skycons/master/skycons.js"></script>
-  <script src="./js/main.js"></script>
-</body>
+    <div class="loading">
+      <div>
+        Please, waiting for retrieving your location and the local weather.
+      </div>
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://rawgit.com/darkskyapp/skycons/master/skycons.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
 </html>
